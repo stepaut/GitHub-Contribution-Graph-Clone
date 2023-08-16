@@ -3,156 +3,222 @@
 /* Grid-related CSS */
 
 :root {
-    --square-size: 15px;
-    --square-gap: 5px;
-    --week-width: calc(var(--square-size) + var(--square-gap));
-  }
+  --square-size: 15px;
+  --square-gap: 5px;
+  --week-width: calc(var(--square-size) + var(--square-gap));
+}
 
-  .months { grid-area: months; }
-  .days { grid-area: days; }
-  .squares { grid-area: squares; }
+.months {
+  grid-area: months;
+}
 
-  .graph {
-    display: inline-grid;
-    grid-template-areas: "empty months"
-                         "days squares";
-    grid-template-columns: auto 1fr;
-    grid-gap: 10px;
-  }
+.days {
+  grid-area: days;
+}
 
-  .months {
-    display: grid;
-    grid-template-columns: calc(var(--week-width) * 4) /* Jan */
-                           calc(var(--week-width) * 4) /* Feb */
-                           calc(var(--week-width) * 4) /* Mar */
-                           calc(var(--week-width) * 5) /* Apr */
-                           calc(var(--week-width) * 4) /* May */
-                           calc(var(--week-width) * 4) /* Jun */
-                           calc(var(--week-width) * 5) /* Jul */
-                           calc(var(--week-width) * 4) /* Aug */
-                           calc(var(--week-width) * 4) /* Sep */
-                           calc(var(--week-width) * 5) /* Oct */
-                           calc(var(--week-width) * 4) /* Nov */
-                           calc(var(--week-width) * 5) /* Dec */;
-  }
+.squares {
+  grid-area: squares;
+}
 
-  .days,
-  .squares {
-    display: grid;
-    grid-gap: var(--square-gap);
-    grid-template-rows: repeat(7, var(--square-size));
-  }
+.graph {
+  display: inline-grid;
+  grid-template-areas: "empty months"
+    "days squares";
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+}
 
-  .squares {
-    grid-auto-flow: column;
-    grid-auto-columns: var(--square-size);
-  }
+.months {
+  display: grid;
+  grid-template-columns: calc(var(--week-width) * 4)
+    /* Jan */
+    calc(var(--week-width) * 4)
+    /* Feb */
+    calc(var(--week-width) * 4)
+    /* Mar */
+    calc(var(--week-width) * 5)
+    /* Apr */
+    calc(var(--week-width) * 4)
+    /* May */
+    calc(var(--week-width) * 4)
+    /* Jun */
+    calc(var(--week-width) * 5)
+    /* Jul */
+    calc(var(--week-width) * 4)
+    /* Aug */
+    calc(var(--week-width) * 4)
+    /* Sep */
+    calc(var(--week-width) * 5)
+    /* Oct */
+    calc(var(--week-width) * 4)
+    /* Nov */
+    calc(var(--week-width) * 5)
+    /* Dec */
+  ;
+}
 
-  /* Legend Styling */
-  .contributeLegend {
-    padding: 0;
-    border: 1px #ff012d solid;
-    margin-top: 30px;
-    margin-right: 8.5%;
-    margin-left: 80%;
-  }
+.days,
+.squares {
+  display: grid;
+  grid-gap: var(--square-gap);
+  grid-template-rows: repeat(7, var(--square-size));
+}
 
-  .legendTitle {
-    font-weight: 300;
-    font-size: 14px;
-    padding: 0;
-    text-align: center;
-  }
+.squares {
+  grid-auto-flow: column;
+  grid-auto-columns: var(--square-size);
+}
 
-  .legendSquares {
-    grid-area: squares;
-  }
+/* Legend Styling */
+.contributeLegend {
+  padding: 0;
+  border: 1px #000000 solid;
+  margin-top: 30px;
+  margin-right: 8.5%;
+  margin-left: 80%;
+}
 
-  .legendSquares {
-    display: grid;
-    grid-gap: var(--square-gap);
-    grid-template-rows: repeat(1, var(--square-size));
-  }
+.legendTitle {
+  font-weight: 300;
+  font-size: 14px;
+  padding: 0;
+  text-align: center;
+}
 
-  .legendSquares {
-    grid-auto-flow: column;
-    grid-auto-columns: var(--square-size);
-  }
+.legendSquares {
+  grid-area: squares;
+}
 
-  .legendSquares li {
-    background-color: #ffeaed;
-  }
+.legendSquares {
+  display: grid;
+  grid-gap: var(--square-gap);
+  grid-template-rows: repeat(1, var(--square-size));
+}
 
-  .legendSquares li[data-level="1"] {
-    background-color: #ffafbd;
-  }
+.legendSquares {
+  grid-auto-flow: column;
+  grid-auto-columns: var(--square-size);
+}
 
-  .legendSquares li[data-level="2"] {
-    background-color: #ff607c;
-  }
+.legendSquares li {
+  background-color: #ebedf0;
+}
 
-  .legendSquares li[data-level="3"] {
-    background-color: #ff123b;
-  }
+.legendSquares li[data-level="1.0"][data-theme="green"] {
+  background-color: #9be9a8;
+}
 
-  /* Other styling */
+.legendSquares li[data-level="1.0"][data-theme="hard"] {
+  background-color: #ffd900;
+}
 
-  body {
-    font-family: 'Verdana';
-    font-size: 12px;
-  }
+.legendSquares li[data-level="2.0"][data-theme="green"] {
+  background-color: #40c463;
+}
 
-  h1 {
-    font-size: 28px;
-    text-align: center;
-    margin-top: 50px;
-    font-family: 'Lemonada', cursive;
-    color: #ff4162;
-  }
+.legendSquares li[data-level="2.0"][data-theme="hard"] {
+  background-color: #ff4d00;
+}
 
-  .title {
-        font-family: 'Verdana'  !important;
-  }
+.legendSquares li[data-level="3.0"][data-theme="green"] {
+  background-color: #30a14e;
+}
 
-  ul {
-    list-style-type: none;
-  }
+.legendSquares li[data-level="3.0"][data-theme="hard"] {
+  background-color: #000000;
+}
 
-  .graph {
-    padding-top: 25px;
-    padding-right: 20px;
-    padding-left: 0px;
-    padding-bottom: 15px;
-    border: 1px #ff012d solid;
-    margin-top: 70px;
-    margin-right:5%;
-    margin-left: 7%;
-  }
+.legendSquares li[data-level="4.0"][data-theme="green"] {
+  background-color: #216e39;
+}
+
+.legendSquares li[data-level="4.0"][data-theme="hard"] {
+  background-color: #9500ff;
+}
+
+/* Other styling */
+
+body {
+  font-family: 'Verdana';
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 28px;
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Lemonada', cursive;
+  color: #000000;
+}
+
+.title {
+  font-family: 'Verdana' !important;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.graph {
+  padding-top: 25px;
+  padding-right: 20px;
+  padding-left: 0px;
+  padding-bottom: 15px;
+  border: 1px #000000 solid;
+  margin-top: 70px;
+  margin-right: 5%;
+  margin-left: 7%;
+}
 
 
-  .squares li {
-    background-color: #ffeaed;
-  }
+.squares li {
+  background-color: #ebedf0;
+}
 
-  .squares li[data-level="1"] {
-    background-color: #ffafbd;
-  }
+.squares li[data-level="-1.0"] {
+  background-color: #ffffff;
+}
 
-  .squares li[data-level="2"] {
-    background-color: #ff607c;
-  }
+.squares li[data-level="1.0"][data-theme="green"] {
+  background-color: #9be9a8;
+}
 
-  .squares li[data-level="3"] {
-    background-color: #ff123b;
-  }
+.squares li[data-level="1.0"][data-theme="hard"] {
+  background-color: #ffd900;
+}
 
-  /* Tooltip */
+.squares li[data-level="2.0"][data-theme="green"] {
+  background-color: #40c463;
+}
 
-  .tooltip {
+.squares li[data-level="2.0"][data-theme="hard"] {
+  background-color: #ff4d00;
+}
+
+.squares li[data-level="3.0"][data-theme="green"] {
+  background-color: #30a14e;
+}
+
+.squares li[data-level="3.0"][data-theme="hard"] {
+  background-color: #000000;
+}
+
+.squares li[data-level="4.0"][data-theme="green"] {
+  background-color: #216e39;
+}
+
+.squares li[data-level="4.0"][data-theme="hard"] {
+  background-color: #9500ff;
+}
+
+
+/* Tooltip */
+
+.tooltip {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
-  }
+}
 
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -169,7 +235,7 @@
   margin-left: -60px;
   opacity: 0;
   transition: opacity 0.3s;
-  }
+}
 
 .tooltip .tooltiptext::after {
   content: "";
@@ -180,9 +246,9 @@
   border-width: 5px;
   border-style: solid;
   border-color: #555 transparent transparent transparent;
-  }
+}
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
-  }
+}

@@ -1,13 +1,23 @@
 from flask import Flask, render_template, json
 import spreadsheet
 
+SOURCE = "EXCEL"  # GDRIVE , EXCEL
+THEME = "green"  # green , hard
+
 app = Flask(__name__)
 
-@app.route("/")
 
+@app.route("/")
 def main():
-    data = spreadsheet.getLevel()
-    return render_template('index.html', data=data)
+    if SOURCE == "GDRIVE":
+        data = spreadsheet.getDataFromGoogleDrive()
+        return render_template('gdrive.html', data=data, theme=THEME)
+    elif SOURCE == "EXCEL":
+        data = spreadsheet.getDataFromExcel()
+        return render_template('excel.html', data=data, theme=THEME)
+    else:
+        return
+
 
 if __name__ == "__main__":
     app.jinja_env.auto_reload = True
