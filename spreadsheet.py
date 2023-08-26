@@ -1,7 +1,11 @@
 import os
 import gspread
 import xlrd
+from pandas import *
+from tkinter import *
+from tkinter.filedialog import askopenfile
 from oauth2client.service_account import ServiceAccountCredentials
+
 
 def getDataFromGoogleDrive():
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
@@ -17,8 +21,8 @@ def getDataFromGoogleDrive():
     task = sheet.col_values(2, value_render_option='FORMATTED_VALUE')
     numberOfTasks = sheet.col_values(3, value_render_option='FORMATTED_VALUE')
     level = sheet.col_values(4, value_render_option='FORMATTED_VALUE')
-    data = [date, task, level]
-    return data
+    
+    return [date, task, level]
 
 
 def getDataFromExcel():
@@ -28,5 +32,22 @@ def getDataFromExcel():
     sheet = workbook.sheet_by_name('Sheet1')
     date = sheet.col_values(0)
     level = sheet.col_values(1)
-    data = [date, level]
-    return data
+
+    return [date, level]
+
+
+def getDataFromCsv():
+    try:
+        Tk().withdraw()
+        csv_file = askopenfile(filetypes=([("CSV files", "*.csv")]))
+
+        data = read_csv(csv_file)
+        date = data["Date"].tolist()
+        level = data["Level"].tolist()
+
+        print([date, level])
+
+        return [date, level]
+    except Exception as ex:
+        print(ex)
+        return None
